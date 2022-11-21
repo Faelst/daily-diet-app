@@ -1,6 +1,7 @@
 export default {
   COLORS: {
-    WHITE: '#FAFAFA',
+    TRANSPARENT: 'transparent',
+    WHITE: 'white',
     BLACK: '#000000',
 
     GRAY_700: '#FAFAFA',
