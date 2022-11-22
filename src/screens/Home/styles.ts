@@ -7,7 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export const Container = styled(SafeAreaView)`
   width: 100%;
   height: 100%;
-  padding: 70px 24px 0px 24px;
+  padding: 20px 24px 0px 24px;
 
   background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
