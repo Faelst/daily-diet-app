@@ -1,11 +1,10 @@
 import * as S from './styles';
 
-import openImg from '@assets/open.png';
-
 type Props = S.ContainerProps & {
   value: string;
   text: string;
   isHomeCard?: boolean;
+  IconColor?: string;
   handleNavigateToStatistics?: () => void;
 };
 
@@ -14,6 +13,7 @@ export function Card({
   value,
   text,
   color,
+  IconColor,
   isHomeCard = false,
   handleNavigateToStatistics,
 }: Props) {
@@ -23,7 +23,7 @@ export function Card({
       color={color}
       onPress={handleNavigateToStatistics}
     >
-      {isHomeCard && <S.OpenImg source={openImg} />}
+      {isHomeCard && <S.OpenIcon color={IconColor} />}
       <S.PercentTitle isHomeCard={isHomeCard}>{value}</S.PercentTitle>
       <S.PercentSubTitle>{text}</S.PercentSubTitle>
     </S.Container>

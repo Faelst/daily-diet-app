@@ -1,3 +1,4 @@
+import { ArrowUpRight } from 'phosphor-react-native';
 import styled from 'styled-components/native';
 
 // container styles props with width and height
@@ -32,8 +33,9 @@ export const PercentSubTitle = styled.Text`
   text-align: center;
 `;
 
-export const OpenImg = styled.Image`
+export const OpenIcon = styled(ArrowUpRight)`
   position: absolute;
   top: 10;
   right: 10;
+  size: 24;
 `;

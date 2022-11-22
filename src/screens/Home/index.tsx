@@ -2,7 +2,7 @@ import * as S from './styles';
 
 import { Header } from '@components/Header';
 import { Card } from '@components/Card';
-import { MealsItem } from '@components/Meals';
+import { Meals } from '@components/Meals';
 import theme from '@theme/index';
 import { useNavigation } from '@react-navigation/native';
 
@@ -24,6 +24,7 @@ export function Home() {
 
         <Card
           color={theme.COLORS.GREEN_LIGHT}
+          IconColor={theme.COLORS.GREEN_DARK}
           value="90,86%"
           text="das refeições dentro da dieta"
           isHomeCard
@@ -38,11 +39,11 @@ export function Home() {
           </S.Button>
         </S.ContainerMeals>
 
-        <MealsItem />
+        <Meals />
 
-        <MealsItem />
+        <Meals />
 
-        <MealsItem />
+        <Meals />
       </S.Container>
     </>
   );
