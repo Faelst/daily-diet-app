@@ -2,7 +2,7 @@ import * as S from './styles';
 
 import { Header } from '@components/Header';
 import { Card } from '@components/Card';
-import { MealsItem } from '@components/MealsItem';
+import { MealsItem } from '@components/Meals';
 import theme from '@theme/index';
 import { useNavigation } from '@react-navigation/native';
 
