@@ -1,3 +1,4 @@
+import { PencilSimpleLine, Trash } from 'phosphor-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 
@@ -7,7 +8,6 @@ export const Container = styled(SafeAreaView)`
 `;
 
 export const Header = styled.View`
-  padding: 10px
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -27,6 +27,11 @@ export const Content = styled.View`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+`;
+
+export const Form = styled.View`
+  flex: 1;
+  
 `;
 
 export const Title = styled.Text`
@@ -82,20 +87,33 @@ export const Status = styled.View`
   margin-right: 10px;
 `;
 
-export const Button = styled.TouchableOpacity<{ isSaveBtn?: boolean }>`
-  width: ${({ isSaveBtn }) => (isSaveBtn ? '100%' : '48%')};
+export const Button = styled.TouchableOpacity<{ isRemove?: boolean }>`
+  width: 100%;
   height: 48px;
+  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_100};
   border-radius: 10px;
-  background-color: ${({ theme, isSaveBtn }) =>
-    isSaveBtn ? theme.COLORS.GRAY_200 : theme.COLORS.GRAY_600};
+  background-color: ${({ theme, isRemove }) =>
+    isRemove ? theme.COLORS.TRANSPARENT : theme.COLORS.GRAY_200};
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-bottom: 10px;
 `;
 
-export const Label = styled.Text<{ isSaveBtn?: boolean }>`
+export const Label = styled.Text<{ isRemove?: boolean }>`
   font-size: ${({ theme }) => theme.FONT_SIZE.s};
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  color: ${({ theme, isSaveBtn }) =>
-    isSaveBtn ? theme.COLORS.GRAY_500 : theme.COLORS.GRAY_200};
+  color: ${({ theme, isRemove }) =>
+    isRemove ? theme.COLORS.GRAY_100 : theme.COLORS.GRAY_500};
+  margin-left: 10px;
 `;
+
+export const EditIcon = styled(PencilSimpleLine).attrs(({ theme }) => ({
+  size: theme.FONT_SIZE.l,
+  color: theme.COLORS.WHITE,
+}))``;
+
+export const RemoveIcon = styled(Trash).attrs(({ theme }) => ({
+  size: theme.FONT_SIZE.l,
+  color: theme.COLORS.GRAY_100,
+}))``;
