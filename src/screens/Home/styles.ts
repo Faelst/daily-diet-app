@@ -23,7 +23,7 @@ export const Button = styled.TouchableOpacity`
   height: 50px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_200};
   border-radius: 8px;
-  margin: 10px 0px 35px 0px;
+  margin: 10px 0px 0px 0px;
   justify-content: center;
   align-items: center;
 

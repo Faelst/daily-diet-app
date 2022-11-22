@@ -1,13 +1,13 @@
 import * as S from './styles';
 
-type Props = { status?: boolean };
+export type Props = { status?: boolean; description: string; time: string };
 
-export function Item({ status = false }: Props) {
+export function Item({ status = false, description, time }: Props) {
   return (
     <S.Container>
-      <S.Time>12:00</S.Time>
+      <S.Time>{time}</S.Time>
       <S.Divider />
-      <S.Description>X-tudo</S.Description>
+      <S.Description>{description}</S.Description>
       <S.Status status={status} />
     </S.Container>
   );

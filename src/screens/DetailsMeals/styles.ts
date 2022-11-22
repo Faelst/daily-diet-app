@@ -11,7 +11,8 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 50px 0 15px 0;
+  margin: 60px 0 20px 0;
+  padding: 10px 0px;
 `;
 
 export const TitleHeader = styled.Text`
@@ -31,7 +32,6 @@ export const Content = styled.View`
 
 export const Form = styled.View`
   flex: 1;
-  
 `;
 
 export const Title = styled.Text`

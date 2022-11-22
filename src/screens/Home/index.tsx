@@ -43,10 +43,6 @@ export function Home() {
       </S.ContainerMeals>
 
       <Meals />
-
-      <Meals />
-
-      <Meals last />
     </S.ScrollContainer>
   );
 }
