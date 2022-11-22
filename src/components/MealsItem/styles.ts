@@ -11,7 +11,7 @@ export const DateText = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 `;
 
-export const Content = styled.View`
+export const Content = styled.TouchableOpacity`
   width: 100%;
   height: 50px;
   margin: 10px 0px 0px 0px;
