@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  width: 100%;
-  margin-bottom: 30px;
+export const Container = styled.View<{ last?: boolean }>`
+  flex: 1;
+  margin-bottom: ${({ last }) => (last ? 150 : 20)}px;
 `;
 
 export const DateText = styled.Text`

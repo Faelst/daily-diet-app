@@ -52,9 +52,14 @@ export const Label = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput.attrs<{ isTextArea?: boolean }>(
+  ({ isTextArea }) => ({
+    multiline: isTextArea ? true : false,
+    lines: isTextArea ? 5 : 1,
+  })
+)<{ isTextArea?: boolean }>`
   width: 100%;
-  height: 48px;
+  height: ${({ isTextArea }) => (isTextArea ? '100px' : '48px')};
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_500};
   border-radius: 10px;
   border-color: ${({ theme }) => theme.COLORS.GRAY_500};

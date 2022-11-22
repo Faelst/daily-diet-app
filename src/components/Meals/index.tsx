@@ -1,13 +1,17 @@
 import { Item } from '@components/Item';
 import * as S from './styles';
 
-export function Meals() {
+type Props = {
+  last?: boolean;
+};
+
+export function Meals({ last }: Props) {
   return (
-    <S.Container>
+    <S.Container last={last}>
       <S.DateText>12.08.22</S.DateText>
       <Item status />
       <Item />
-      <Item />
+      <Item status />
     </S.Container>
   );
 }

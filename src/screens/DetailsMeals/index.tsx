@@ -1,14 +1,24 @@
 import { BackButton } from '@components/BackButton';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import theme from '@theme/index';
 import * as S from './styles';
 
+type Params = {
+  id?: string;
+  isNew?: boolean;
+};
+
 export function DetailsMeals() {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { id = '', isNew = false } = route.params as Params;
+
   return (
     <>
       <S.Container>
         <S.Header>
           <BackButton color={theme.COLORS.GRAY_200} />
-          <S.TitleHeader>Refeição</S.TitleHeader>
+          <S.TitleHeader>{isNew ? 'Nova refeição' : 'Refeição'}</S.TitleHeader>
         </S.Header>
       </S.Container>
 
@@ -17,7 +27,7 @@ export function DetailsMeals() {
         <S.Input />
 
         <S.Label>Descrição</S.Label>
-        <S.Input />
+        <S.Input isTextArea />
 
         <S.Footer>
           <S.InputGroup>

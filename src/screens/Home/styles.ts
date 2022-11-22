@@ -1,15 +1,10 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 
 import { FontAwesome } from '@expo/vector-icons';
 
-export const Container = styled(SafeAreaView)`
-  width: 100%;
-  height: 100%;
-  padding: 20px 24px 0px 24px;
-
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
+export const ScrollContainer = styled.ScrollView`
+  padding: 65px 24px 0 24px;
+  background-color: ${({ theme }) => theme.COLORS.TRANSPARENT};
 `;
 
 export const ContainerMeals = styled.View`
