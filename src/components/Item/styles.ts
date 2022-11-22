@@ -32,9 +32,10 @@ export const Description = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 `;
 
-export const Status = styled.View`
+export const Status = styled.View<{ status?: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 15px;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+  background-color: ${({ theme, status }) =>
+    status ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_MID};
 `;
