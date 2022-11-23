@@ -1,5 +1,4 @@
-import { useCallback, useState } from 'react';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
 import theme from '@theme/index';

@@ -7,7 +7,6 @@ export async function getAll(): Promise<MealsProps[]> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
 
-    // sort meals by title date
     const meals =
       storage &&
       (JSON.parse(storage) as MealsProps[]).sort((a, b) => {

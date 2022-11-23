@@ -24,9 +24,8 @@ export function Meals({}: Props) {
 
   useFocusEffect(
     useCallback(() => {
-      Storage.getAll().then((meals: any) => {
+      Storage.getAll().then((meals: MealsProps[]) => {
         setMeals(meals);
-        console.log(meals);
       });
     }, [])
   );
