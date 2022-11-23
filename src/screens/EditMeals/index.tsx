@@ -1,6 +1,6 @@
 import { Props as ItemProps } from '@components/Item';
 import { Header } from '@components/Header';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import * as S from './styles';
 import { useState } from 'react';
 
@@ -11,9 +11,9 @@ type Params = {
 
 export function EditMeals() {
   const route = useRoute();
-  const { isNew = false, item } = route.params as Params;
+  const { isNew = false, item = {} } = route.params as Params;
 
-  const [data, setData] = useState<ItemProps>(item);
+  const [data, setData] = useState<ItemProps>(item as ItemProps);
 
   const handleChange = (key: string, value: string | boolean) => {
     setData({ ...data, [key]: value });

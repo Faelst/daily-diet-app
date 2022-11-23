@@ -37,5 +37,5 @@ export const Status = styled.View<{ status?: boolean }>`
   height: 20px;
   border-radius: 15px;
   background-color: ${({ theme, status }) =>
-    status ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_MID};
+    status ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID};
 `;
