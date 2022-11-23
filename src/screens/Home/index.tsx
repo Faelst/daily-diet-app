@@ -1,32 +1,12 @@
+import { useCallback, useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+
 import * as S from './styles';
+import theme from '@theme/index';
 
 import { HeaderHome } from '@components/HeaderHome';
 import { Card } from '@components/Card';
 import { Meals } from '@components/Meals';
-import theme from '@theme/index';
-import { useNavigation } from '@react-navigation/native';
-
-const DATA = [
-  {
-    title: '12.08.22',
-    data: [
-      {
-        name: 'Café da manhã 1',
-        description: 'lorem ipsum dolor sit amet',
-        time: '08:00',
-        date: '12.08.22',
-        intoDiet: true,
-      },
-      {
-        name: 'Café da manhã 2',
-        description: 'lorem ipsum dolor sit amet',
-        time: '08:00',
-        date: '12.08.22',
-        intoDiet: false,
-      },
-    ],
-  },
-];
 
 export function Home() {
   const navigation = useNavigation();
@@ -60,7 +40,7 @@ export function Home() {
         </S.Button>
       </S.ContainerMeals>
 
-      <Meals data={DATA} />
+      <Meals />
     </S.ScrollContainer>
   );
 }

@@ -1,8 +1,10 @@
 import { Props as ItemProps } from '@components/Item';
 import { Header } from '@components/Header';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import * as S from './styles';
 import { useState } from 'react';
+
+import Storage from '@storage/meals/index';
 
 type Params = {
   item: ItemProps;
@@ -10,6 +12,8 @@ type Params = {
 };
 
 export function EditMeals() {
+  const navigation = useNavigation();
+
   const route = useRoute();
   const { isNew = false, item = {} } = route.params as Params;
 
@@ -17,6 +21,21 @@ export function EditMeals() {
 
   const handleChange = (key: string, value: string | boolean) => {
     setData({ ...data, [key]: value });
+  };
+
+  const handleSave = async () => {
+    try {
+      if (isNew) {
+        await Storage.addItem(data);
+      } else {
+        //Storage.update(data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setData({} as ItemProps);
+      navigation.goBack();
+    }
   };
 
   return (
@@ -65,7 +84,7 @@ export function EditMeals() {
             <S.Label>Sim</S.Label>
           </S.Button>
           <S.Button
-            isNotIntoDiet={!data.intoDiet}
+            isNotIntoDiet={data.intoDiet}
             onPress={() => handleChange('intoDiet', false)}
           >
             <S.StatusCircleIcon></S.StatusCircleIcon>
@@ -73,7 +92,7 @@ export function EditMeals() {
           </S.Button>
         </S.ButtonGroup>
 
-        <S.Button isSaveBtn>
+        <S.Button isSaveBtn onPress={handleSave}>
           <S.Label isSaveBtn>Salvar</S.Label>
         </S.Button>
       </S.Form>

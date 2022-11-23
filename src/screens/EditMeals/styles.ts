@@ -68,7 +68,7 @@ export const Button = styled.TouchableOpacity<{
   flex-direction: row;
 
   ${({ isIntoDiet, theme }) =>
-    isIntoDiet
+    isIntoDiet === true
       ? `
     background-color: ${theme.COLORS.GREEN_LIGHT};
     border: 1px solid ${theme.COLORS.GREEN_DARK};
@@ -76,7 +76,7 @@ export const Button = styled.TouchableOpacity<{
       : ''}
 
   ${({ isNotIntoDiet, theme }) =>
-    isNotIntoDiet
+    isNotIntoDiet === false
       ? `
     background-color: ${theme.COLORS.RED_LIGHT};
     border: 1px solid ${theme.COLORS.RED_DARK};

@@ -12,7 +12,8 @@
       "@routes/*": ["src/routes/*"],
       "@theme/*": ["src/theme/*"],
       "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@storage/*": ["src/storage/*"]
     }
   }
 }

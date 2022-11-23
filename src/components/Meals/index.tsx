@@ -1,26 +1,35 @@
 import { Item, Props as ItemProps } from '@components/Item';
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useCallback, useState } from 'react';
 
 import * as S from './styles';
 
-type Props = {
-  data: MealsProps[];
-};
+import Storage from '@storage/meals/index';
+
+type Props = {};
 
 export type MealsProps = {
   title: string;
   data: ItemProps[];
 };
 
-export function Meals({ data }: Props) {
+export function Meals({}: Props) {
   const navigation = useNavigation();
 
-  const [meals, setMeals] = useState<MealsProps[]>(data);
+  const [meals, setMeals] = useState<MealsProps[]>([]);
 
   const handleNavigateToDetailsMeals = (item: ItemProps) => {
     navigation.navigate('DetailsMeals', item);
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      Storage.getAll().then((meals: any) => {
+        setMeals(meals);
+        console.log(meals);
+      });
+    }, [])
+  );
 
   return (
     <S.Container
