@@ -6,6 +6,28 @@ import { Meals } from '@components/Meals';
 import theme from '@theme/index';
 import { useNavigation } from '@react-navigation/native';
 
+const DATA = [
+  {
+    title: '12.08.22',
+    data: [
+      {
+        name: 'Café da manhã 1',
+        description: 'lorem ipsum dolor sit amet',
+        time: '08:00',
+        date: '12.08.22',
+        intoDiet: true,
+      },
+      {
+        name: 'Café da manhã 2',
+        description: 'lorem ipsum dolor sit amet',
+        time: '08:00',
+        date: '12.08.22',
+        intoDiet: false,
+      },
+    ],
+  },
+];
+
 export function Home() {
   const navigation = useNavigation();
 
@@ -38,7 +60,7 @@ export function Home() {
         </S.Button>
       </S.ContainerMeals>
 
-      <Meals />
+      <Meals data={DATA} />
     </S.ScrollContainer>
   );
 }

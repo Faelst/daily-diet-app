@@ -65,11 +65,12 @@ export const TagTitle = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 `;
 
-export const Status = styled.View`
+export const Status = styled.View<{ intoDiet: boolean }>`
   width: 10px;
   height: 10px;
   border-radius: 60px;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_DARK};
+  background-color: ${({ theme, intoDiet }) =>
+    intoDiet ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
   margin-right: 10px;
 `;
 

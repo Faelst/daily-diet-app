@@ -1,10 +1,13 @@
+import { Props as ItemProps } from '@components/Item';
 import { Header } from '@components/Header';
-import { useNavigation } from '@react-navigation/native';
-import theme from '@theme/index';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import * as S from './styles';
 
 export function DetailsMeals() {
   const navigation = useNavigation();
+
+  const route = useRoute();
+  const { name, description, date, time, intoDiet } = route.params as ItemProps;
 
   const handleEdit = () => {
     navigation.navigate('EditMeals', { isNew: false });
@@ -16,17 +19,17 @@ export function DetailsMeals() {
 
       <S.Content>
         <S.Form>
-          <S.Title>Sanduíche</S.Title>
-          <S.Description>
-            Sanduíche de pão integral com atum e salada de alface e tomate
-          </S.Description>
+          <S.Title>{name}</S.Title>
+          <S.Description>{description}</S.Description>
 
           <S.DateTItle>Data e hora</S.DateTItle>
-          <S.Date>12/12/2020 12:00</S.Date>
+          <S.Date>{`${date} ${time}`}</S.Date>
 
           <S.Tag>
-            <S.Status />
-            <S.TagTitle>dentro da dieta</S.TagTitle>
+            <S.Status intoDiet={intoDiet} />
+            <S.TagTitle>
+              {intoDiet ? 'Dentro da dieta' : 'Fora da dieta'}
+            </S.TagTitle>
           </S.Tag>
         </S.Form>
 

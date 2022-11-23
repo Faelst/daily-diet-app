@@ -4,57 +4,19 @@ import { useState } from 'react';
 
 import * as S from './styles';
 
-const DATA = [
-  {
-    title: '12.08.22',
-    data: [
-      { description: 'Café da manhã', time: '08:00' },
-      { description: 'Café da manhã', time: '08:00' },
-    ],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-  {
-    title: '12.08.22',
-    data: [{ description: 'Café da manhã', time: '08:00' }],
-  },
-];
+type Props = {
+  data: MealsProps[];
+};
 
 export type MealsProps = {
   title: string;
   data: ItemProps[];
 };
 
-export function Meals() {
+export function Meals({ data }: Props) {
   const navigation = useNavigation();
 
-  const [meals, setMeals] = useState<MealsProps[]>(DATA as MealsProps[]);
+  const [meals, setMeals] = useState<MealsProps[]>(data);
 
   const handleNavigateToDetailsMeals = (item: ItemProps) => {
     navigation.navigate('DetailsMeals', item);

@@ -3,18 +3,21 @@ import * as S from './styles';
 
 export type Props = TouchableOpacityProps & {
   status?: boolean;
+  name: string;
   description: string;
   time: string;
+  date: string;
+  intoDiet: boolean;
 
   onPress?: () => void;
 };
 
-export function Item({ status = false, description, time, ...rest }: Props) {
+export function Item({ status = false, name, time, ...rest }: Props) {
   return (
     <S.Container {...rest}>
       <S.Time>{time}</S.Time>
       <S.Divider />
-      <S.Description>{description}</S.Description>
+      <S.Description>{name}</S.Description>
       <S.Status status={status} />
     </S.Container>
   );
