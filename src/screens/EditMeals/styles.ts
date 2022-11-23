@@ -7,11 +7,11 @@ export const Container = styled(SafeAreaView)`
 `;
 
 export const Form = styled.View`
-  flex: 1;
+  height: 100%;
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 50px 20px 0 20px;
+  padding: 50px 20px 90px 20px;
 `;
 
 export const InputGroup = styled.View`
@@ -53,15 +53,35 @@ export const ButtonGroup = styled.View`
   margin-top: 10px;
 `;
 
-export const Button = styled.TouchableOpacity<{ isSaveBtn?: boolean }>`
+export const Button = styled.TouchableOpacity<{
+  isSaveBtn?: boolean;
+  isIntoDiet?: boolean;
+  isNotIntoDiet?: boolean;
+}>`
   width: ${({ isSaveBtn }) => (isSaveBtn ? '100%' : '48%')};
-  height: 48px;
+  height: 50px;
   border-radius: 10px;
   background-color: ${({ theme, isSaveBtn }) =>
     isSaveBtn ? theme.COLORS.GRAY_200 : theme.COLORS.GRAY_600};
   justify-content: center;
   align-items: center;
   flex-direction: row;
+
+  ${({ isIntoDiet, theme }) =>
+    isIntoDiet
+      ? `
+    background-color: ${theme.COLORS.GREEN_LIGHT};
+    border: 1px solid ${theme.COLORS.GREEN_DARK};
+  `
+      : ''}
+
+  ${({ isNotIntoDiet, theme }) =>
+    isNotIntoDiet
+      ? `
+    background-color: ${theme.COLORS.RED_LIGHT};
+    border: 1px solid ${theme.COLORS.RED_DARK};
+  `
+      : ''}
 `;
 
 export const StatusCircleIcon = styled.View<{ isBtnTruth?: boolean }>`
