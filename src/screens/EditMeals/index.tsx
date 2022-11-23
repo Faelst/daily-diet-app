@@ -1,4 +1,5 @@
 import { BackButton } from '@components/BackButton';
+import { Header } from '@components/Header';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import theme from '@theme/index';
 import * as S from './styles';
@@ -14,13 +15,8 @@ export function EditMeals() {
   const { id = '', isNew = false } = route.params as Params;
 
   return (
-    <>
-      <S.Container>
-        <S.Header>
-          <BackButton color={theme.COLORS.GRAY_200} />
-          <S.TitleHeader>{isNew ? 'Nova refeição' : 'Refeição'}</S.TitleHeader>
-        </S.Header>
-      </S.Container>
+    <S.Container>
+      <Header title={isNew ? 'Nova refeição' : 'Refeição'} />
 
       <S.Form>
         <S.Label>Nome</S.Label>
@@ -56,6 +52,6 @@ export function EditMeals() {
           <S.Label isSaveBtn>Salvar</S.Label>
         </S.Button>
       </S.Form>
-    </>
+    </S.Container>
   );
 }

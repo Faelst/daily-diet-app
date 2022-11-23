@@ -6,14 +6,14 @@ export type BackButtonProps = {
 };
 
 export function BackButton({ color }: BackButtonProps) {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
-  // function handleGoBack() {
-  //   navigation.goBack();
-  // }
+  function handleGoBack() {
+    navigation.goBack();
+  }
 
   return (
-    <S.Container>
+    <S.Container onPress={handleGoBack}>
       <S.BackIcon color={color} />
     </S.Container>
   );

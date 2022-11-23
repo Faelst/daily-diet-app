@@ -1,14 +1,18 @@
-import { BackButton } from '@components/BackButton';
+import { Header } from '@components/Header';
+import { useNavigation } from '@react-navigation/native';
 import theme from '@theme/index';
 import * as S from './styles';
 
 export function DetailsMeals() {
+  const navigation = useNavigation();
+
+  const handleEdit = () => {
+    navigation.navigate('EditMeals', { isNew: false });
+  };
+
   return (
     <S.Container>
-      <S.Header>
-        <BackButton color={theme.COLORS.GRAY_200} />
-        <S.TitleHeader>Refeição</S.TitleHeader>
-      </S.Header>
+      <Header title="Refeição" />
 
       <S.Content>
         <S.Form>
@@ -25,7 +29,8 @@ export function DetailsMeals() {
             <S.TagTitle>dentro da dieta</S.TagTitle>
           </S.Tag>
         </S.Form>
-        <S.Button>
+
+        <S.Button onPress={() => handleEdit()}>
           <S.EditIcon />
           <S.Label>Editar refeição</S.Label>
         </S.Button>

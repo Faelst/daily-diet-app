@@ -1,10 +1,17 @@
+import { TouchableOpacityProps } from 'react-native';
 import * as S from './styles';
 
-export type Props = { status?: boolean; description: string; time: string };
+export type Props = TouchableOpacityProps & {
+  status?: boolean;
+  description: string;
+  time: string;
 
-export function Item({ status = false, description, time }: Props) {
+  onPress?: () => void;
+};
+
+export function Item({ status = false, description, time, ...rest }: Props) {
   return (
-    <S.Container>
+    <S.Container {...rest}>
       <S.Time>{time}</S.Time>
       <S.Divider />
       <S.Description>{description}</S.Description>

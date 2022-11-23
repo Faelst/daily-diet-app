@@ -1,13 +1,18 @@
 import * as S from './styles';
 
-import logoImg from '@assets/logo.png';
-import avatarImg from '@assets/avatar.png';
+import { BackButton } from '@components/BackButton';
 
-export function Header() {
+import theme from '@theme/index';
+
+type Props = {
+  title: string;
+};
+
+export function Header({ title }: Props) {
   return (
     <S.Container>
-      <S.Logo source={logoImg} />
-      <S.Avatar source={avatarImg} />
+      <BackButton color={theme.COLORS.GRAY_200} />
+      <S.Title>{title}</S.Title>
     </S.Container>
   );
 }

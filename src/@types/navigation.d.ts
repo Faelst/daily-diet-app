@@ -1,9 +1,15 @@
+import { Props as ItemProps } from '@components/Item';
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
       Home: undefined;
-      DetailsMeals?: { id?: string; isNew?: boolean };
+      DetailsMeals?: ItemProps;
       Statistics: undefined;
+      EditMeals: {
+        isNew?: boolean;
+        item?: ItemProps;
+      };
     }
   }
 }

@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-import { Header } from '@components/Header';
+import { HeaderHome } from '@components/HeaderHome';
 import { Card } from '@components/Card';
 import { Meals } from '@components/Meals';
 import theme from '@theme/index';
@@ -10,20 +10,16 @@ export function Home() {
   const navigation = useNavigation();
 
   const handleNavigateToNewDetailsMeals = () => {
-    navigation.navigate('DetailsMeals', { isNew: true });
+    navigation.navigate('EditMeals', { isNew: true });
   };
 
   const handleNavigateToStatistics = () => {
     navigation.navigate('Statistics');
   };
 
-  const handleNavigateToDetailsMeals = () => {
-    navigation.navigate('DetailsMeals');
-  };
-
   return (
     <S.ScrollContainer>
-      <Header />
+      <HeaderHome />
 
       <Card
         color={theme.COLORS.GREEN_LIGHT}

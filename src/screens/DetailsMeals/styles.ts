@@ -7,23 +7,9 @@ export const Container = styled(SafeAreaView)`
   background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
 `;
 
-export const Header = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 60px 0 20px 0;
-  padding: 10px 0px;
-`;
-
-export const TitleHeader = styled.Text`
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  font-size: ${({ theme }) => theme.FONT_SIZE.l};
-  color: ${({ theme }) => theme.COLORS.GRAY_100};
-`;
-
 export const Content = styled.View`
-  flex: 1;
-  padding: 40px 20px;
+  height: 100%;
+  padding: 40px 20px 80px 20px;
 
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-top-left-radius: 30px;
