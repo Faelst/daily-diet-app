@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react';
 import * as S from './styles';
 
 import Storage from '@storage/meals/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = {};
 

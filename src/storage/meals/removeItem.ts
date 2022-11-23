@@ -1,40 +1,34 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MEALS_COLLECTION } from '../config';
 
 import { Props as ItemProps } from '@components/Item';
 
+import Storage from './index';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export async function removeItem(item: ItemProps) {
   try {
-    const meals = await AsyncStorage.getItem(MEALS_COLLECTION);
+    const meals = await Storage.getAll();
 
     if (!meals) {
       return;
     }
 
-    const parsedMeals = JSON.parse(meals);
-
-    const meal = parsedMeals.find((meal: any) => meal.title === item.date);
-
-    if (!meal) {
-      return;
-    }
-
-    const newMeal = meal.data.filter(
-      (mealItem: ItemProps) => mealItem !== item
-    );
-
-    const newMeals = parsedMeals.map((meal: any) => {
+    const newMeals = meals.map((meal) => {
       if (meal.title === item.date) {
-        return {
-          ...meal,
-          data: newMeal,
-        };
+        meal.data = meal.data.filter(
+          (data) => !(data.date === item.date && data.time === item.time)
+        );
       }
 
-      return meal;
+      if (meal.data.length) {
+        return meal;
+      }
     });
 
-    await AsyncStorage.setItem(MEALS_COLLECTION, JSON.stringify(newMeals));
+    const mealsStringify = JSON.stringify(newMeals.filter((item) => !!item));
+
+    await AsyncStorage.setItem(MEALS_COLLECTION, mealsStringify);
   } catch (error) {
     throw error;
   }

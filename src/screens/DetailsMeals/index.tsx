@@ -2,7 +2,9 @@ import { Props as ItemProps } from '@components/Item';
 import { Header } from '@components/Header';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import * as S from './styles';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import Storage from '@storage/meals/index';
 
 export function DetailsMeals() {
   const navigation = useNavigation();
@@ -12,6 +14,16 @@ export function DetailsMeals() {
 
   const handleEdit = () => {
     navigation.navigate('EditMeals', { isNew: false, item });
+  };
+
+  const handleRemoveItem = async () => {
+    try {
+      await Storage.removeItem(item);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      navigation.navigate('Home');
+    }
   };
 
   return (
@@ -39,7 +51,7 @@ export function DetailsMeals() {
           <S.Label>Editar refeição</S.Label>
         </S.Button>
 
-        <S.Button isRemove>
+        <S.Button isRemove onPress={handleRemoveItem}>
           <S.RemoveIcon />
           <S.Label isRemove>Remover</S.Label>
         </S.Button>
