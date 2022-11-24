@@ -1,4 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
+import { useCallback, useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
 import theme from '@theme/index';
@@ -6,8 +7,11 @@ import theme from '@theme/index';
 import { HeaderHome } from '@components/HeaderHome';
 import { Card } from '@components/Card';
 import { Meals } from '@components/Meals';
+import { MealsAnalytics, mealsAnalytics } from '@services/index';
 
 export function Home() {
+  const [statistics, setStatistics] = useState({} as MealsAnalytics);
+
   const navigation = useNavigation();
 
   const handleNavigateToNewDetailsMeals = () => {
@@ -15,17 +19,31 @@ export function Home() {
   };
 
   const handleNavigateToStatistics = () => {
-    navigation.navigate('Statistics');
+    navigation.navigate('Statistics', statistics);
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      mealsAnalytics().then((analytic) => {
+        setStatistics(analytic);
+      });
+    }, [])
+  );
 
   return (
     <S.ScrollContainer>
       <HeaderHome />
 
       <Card
-        color={theme.COLORS.GREEN_LIGHT}
-        IconColor={theme.COLORS.GREEN_DARK}
-        value="90,86%"
+        color={
+          statistics.isHealthy
+            ? theme.COLORS.GREEN_LIGHT
+            : theme.COLORS.RED_LIGHT
+        }
+        IconColor={
+          statistics.isHealthy ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK
+        }
+        value={`${statistics.percentageHealthy}%`}
         text="das refeições dentro da dieta"
         isHomeCard
         handleNavigateToStatistics={handleNavigateToStatistics}

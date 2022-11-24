@@ -1,9 +1,10 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 
-export const Container = styled(SafeAreaView)`
+export const Container = styled(SafeAreaView)<{ isHealthy: boolean }>`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, isHealthy }) =>
+    isHealthy ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const Header = styled.View`

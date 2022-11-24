@@ -13,7 +13,8 @@
       "@theme/*": ["src/theme/*"],
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/assets/*"],
-      "@storage/*": ["src/storage/*"]
+      "@storage/*": ["src/storage/*"],
+      "@services/*": ["src/services/*"]
     }
   }
 }

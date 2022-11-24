@@ -6,7 +6,7 @@ import { MealsProps } from '@components/Meals';
 export async function getAll(): Promise<MealsProps[]> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
-    console.log('storage', storage);
+
     const meals =
       !!storage &&
       (JSON.parse(storage) as MealsProps[])

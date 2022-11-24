@@ -3,14 +3,27 @@ import * as S from './styles';
 
 import theme from '@theme/index';
 import { BackButton } from '@components/BackButton';
+import { useRoute } from '@react-navigation/native';
+import { MealsAnalytics } from '@services/index';
 
 export function Statistics() {
-  return (
-    <S.Container>
-      <S.Header>
-        <BackButton color={theme.COLORS.GREEN_DARK} />
+  const route = useRoute();
+  const {
+    isHealthy,
+    percentageHealthy,
+    totalOfMeals,
+    totalOfMealsIntoDiet,
+    totalOfMealsOutOfDiet,
+  } = route.params as MealsAnalytics;
 
-        <S.Title>90,86%</S.Title>
+  return (
+    <S.Container isHealthy={isHealthy}>
+      <S.Header>
+        <BackButton
+          color={isHealthy ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK}
+        />
+
+        <S.Title>{percentageHealthy}%</S.Title>
         <S.SubTitle>das refeições dentro da dieta</S.SubTitle>
       </S.Header>
 
@@ -25,21 +38,21 @@ export function Statistics() {
 
         <Card
           color={theme.COLORS.GRAY_600}
-          value="99"
-          text="refeições dentro da dieta"
+          value={totalOfMeals.toString()}
+          text="refeições registradas"
         />
 
         <S.FooterCards>
           <Card
             width="48%"
             color={theme.COLORS.GREEN_LIGHT}
-            value="99"
+            value={totalOfMealsIntoDiet.toString()}
             text="refeições dentro da dieta"
           />
           <Card
             width="48%"
             color={theme.COLORS.RED_LIGHT}
-            value="10"
+            value={totalOfMealsOutOfDiet.toString()}
             text="refeições fora da dieta"
           />
         </S.FooterCards>
