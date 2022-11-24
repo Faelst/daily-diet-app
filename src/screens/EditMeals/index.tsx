@@ -28,13 +28,13 @@ export function EditMeals() {
       if (isNew) {
         await Storage.addItem(data);
       } else {
-        //Storage.update(data);
+        await Storage.updateItem(data);
       }
     } catch (error) {
       console.log(error);
     } finally {
       setData({} as ItemProps);
-      navigation.goBack();
+      navigation.navigate('Home');
     }
   };
 
